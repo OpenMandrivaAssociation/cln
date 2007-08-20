@@ -35,8 +35,8 @@ and speed efficient library.
 %package -n	%{libname}-devel
 Summary:	Development files for programs using the CLN library
 Group:		Development/C++
-Requires(post):	/sbin/install-info
-Requires(preun): /sbin/install-info
+Requires(post):	info-install
+Requires(preun): info-install
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
