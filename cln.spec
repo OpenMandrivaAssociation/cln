@@ -14,7 +14,6 @@ Group:		Sciences/Mathematics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-1.1.9-string.patch
 URL:		http://www.ginac.de/CLN/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gmp-devel
 
 %description
