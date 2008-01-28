@@ -1,9 +1,12 @@
-%define	version	1.1.13
-%define	release	%mkrel 2
+%define	version	1.2.0
+%define	release	%mkrel 1
 
-%define	name	cln
-%define	major	4
-%define	libname	%mklibname %{name} %{major}
+%define	name	 cln
+%define	major	 5
+%define oldmajor 4
+%define	libname	 %mklibname %{name} %{major}
+%define develname %mklibname %{name} -d
+%define olddevelname %mklibname %{name} %{oldmajor} -d
 
 Summary:	C++ Class Library for Numbers
 Name:		%{name}
@@ -12,42 +15,43 @@ Release:	%{release}
 License:	GPL
 Group:		Sciences/Mathematics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-1.1.9-string.patch
 URL:		http://www.ginac.de/CLN/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	gmp-devel
 
 %description
-A GPLed collection of C++ math classes and functions, that will bring
-efficiency, type safety, algebraic syntax to everyone in a memory
-and speed efficient library.
+CLN is a collection of C++ math classes and functions licensed under
+the GPL that provides efficiency, type safety, and algebraic syntax in
+a fast, memory-efficient library.
+
 
 %package -n	%{libname}
 Summary:	C++ Class Library for Numbers
 Group:		Sciences/Mathematics
 Provides:	%{name} = %{version}-%{release}
+Provides:	%{libname} = %{version}-%{release}
 
 %description -n	%{libname}
-A GPLed collection of C++ math classes and functions, that will bring
-efficiency, type safety, algebraic syntax to everyone in a memory
-and speed efficient library.
+CLN is a collection of C++ math classes and functions licensed under
+the GPL that provides efficiency, type safety, and algebraic syntax in
+a fast, memory-efficient library.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Development files for programs using the CLN library
 Group:		Development/C++
 Requires(post):	info-install
 Requires(preun): info-install
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
+Provides:	%{develname} = %{version}-%{release}
+Obsoletes:	%{olddevelname}
 
-%description -n %{libname}-devel
-This package is necessary if you wish to develop software based on
+%description -n %{develname}
+This package is necessary if you wish to develop software that uses
 the CLN library.
 
 %prep
 %setup -q
-%patch0 -p0
 
 %build
 %configure2_5x
@@ -68,7 +72,9 @@ the CLN library.
 
 %{__rm} -rf %{buildroot}%{_datadir}/dvi
 
-%multiarch_binaries %buildroot%_bindir/%name-config
+%{__rm} -rf %{buildroot}%{_bindir}
+%{__rm} -rf %{buildroot}%{_mandir}
+%{__rm} -rf %{buildroot}%{_datadir}/aclocal
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -77,10 +83,10 @@ the CLN library.
 
 %postun -n %{libname} -p /sbin/ldconfig
 
-%post -n %{libname}-devel
+%post -n %{develname}
 %_install_info %{name}.info
 
-%preun -n %{libname}-devel
+%preun -n %{develname}
 %_remove_install_info %{name}.info
 
 %files -n %{libname}
@@ -88,18 +94,12 @@ the CLN library.
 %doc COPYING
 %{_libdir}/*.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %doc ChangeLog NEWS README TODO* documents/*
-%{_bindir}/cln-config
-%multiarch_bindir/%name-config
-%{_datadir}/aclocal/*
 %{_includedir}/*
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_infodir}/*.info*
-%{_mandir}/man1/*
-
-
