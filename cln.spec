@@ -1,7 +1,3 @@
-%define	version	1.2.0
-%define	release	%mkrel 1
-
-%define	name	 cln
 %define	major	 5
 %define oldmajor 4
 %define	libname	 %mklibname %{name} %{major}
@@ -9,10 +5,10 @@
 %define olddevelname %mklibname %{name} %{oldmajor} -d
 
 Summary:	C++ Class Library for Numbers
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-License:	GPL
+Name:		cln
+Version:	1.2.2
+Release:	%mkrel 1
+License:	GPLv2+
 Group:		Sciences/Mathematics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
 URL:		http://www.ginac.de/CLN/
