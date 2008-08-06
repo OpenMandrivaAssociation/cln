@@ -7,7 +7,7 @@
 Summary:	C++ Class Library for Numbers
 Name:		cln
 Version:	1.2.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
