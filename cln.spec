@@ -7,7 +7,7 @@
 Summary:	C++ Class Library for Numbers
 Name:		cln
 Version:	1.2.2
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
@@ -20,12 +20,12 @@ CLN is a collection of C++ math classes and functions licensed under
 the GPL that provides efficiency, type safety, and algebraic syntax in
 a fast, memory-efficient library.
 
-
 %package -n	%{libname}
 Summary:	C++ Class Library for Numbers
 Group:		Sciences/Mathematics
 Provides:	%{name} = %{version}-%{release}
 Provides:	%{libname} = %{version}-%{release}
+Obsoletes:	%{mklibname cln 4}
 
 %description -n	%{libname}
 CLN is a collection of C++ math classes and functions licensed under
@@ -91,8 +91,7 @@ the CLN library.
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
 %defattr(-,root,root)
