@@ -1,8 +1,6 @@
-%define	major	 5
-%define oldmajor 4
-%define	libname	 %mklibname %{name} %{major}
+%define	major 5
+%define	libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
-%define olddevelname %mklibname %{name} %{oldmajor} -d
 
 Summary:	C++ Class Library for Numbers
 Name:		cln
@@ -10,10 +8,10 @@ Version:	1.2.2
 Release:	%mkrel 3
 License:	GPLv2+
 Group:		Sciences/Mathematics
-Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
 URL:		http://www.ginac.de/CLN/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
 BuildRequires:	gmp-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 CLN is a collection of C++ math classes and functions licensed under
@@ -25,7 +23,8 @@ Summary:	C++ Class Library for Numbers
 Group:		Sciences/Mathematics
 Provides:	%{name} = %{version}-%{release}
 Provides:	%{libname} = %{version}-%{release}
-Obsoletes:	%{mklibname cln 4}
+Obsoletes:	%{mklibname cln 4} < 1.2.2
+Provides:	%{mklibname cln 4}
 
 %description -n	%{libname}
 CLN is a collection of C++ math classes and functions licensed under
@@ -40,7 +39,8 @@ Requires(preun): info-install
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
 Provides:	%{develname} = %{version}-%{release}
-Obsoletes:	%{olddevelname}
+Obsoletes:	%{mklibname cln 4 -d} < 1.2.2
+Provides:	%{mklibname cln 4 -d}
 
 %description -n %{develname}
 This package is necessary if you wish to develop software that uses
