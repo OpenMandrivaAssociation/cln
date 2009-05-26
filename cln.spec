@@ -10,6 +10,7 @@ License:	GPLv2+
 Group:		Sciences/Mathematics
 URL:		http://www.ginac.de/CLN/
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
+Patch0:		cln-upstream_gcc44_fix.patch
 BuildRequires:	gmp-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -48,6 +49,7 @@ the CLN library.
 
 %prep
 %setup -q
+%patch0 -p1 -b .gcc44
 
 %build
 %configure2_5x
