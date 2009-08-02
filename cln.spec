@@ -1,16 +1,15 @@
-%define	major 5
+%define	major 6
 %define	libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
 
 Summary:	C++ Class Library for Numbers
 Name:		cln
-Version:	1.2.2
-Release:	%mkrel 4
+Version:	1.3.0
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Mathematics
 URL:		http://www.ginac.de/CLN/
 Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
-Patch0:		cln-upstream_gcc44_fix.patch
 BuildRequires:	gmp-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -26,6 +25,7 @@ Provides:	%{name} = %{version}-%{release}
 Provides:	%{libname} = %{version}-%{release}
 Obsoletes:	%{mklibname cln 4} < 1.2.2
 Provides:	%{mklibname cln 4}
+Obsoletes:	%{mklibname cln 5}
 
 %description -n	%{libname}
 CLN is a collection of C++ math classes and functions licensed under
@@ -49,7 +49,6 @@ the CLN library.
 
 %prep
 %setup -q
-%patch0 -p1 -b .gcc44
 
 %build
 %configure2_5x
@@ -65,7 +64,6 @@ the CLN library.
 # prepare documents
 %{__rm} -rf documents
 %{__mkdir} documents
-%{__mv} %{buildroot}%{_datadir}/html documents/
 %{__cp} --parents examples/*.cc documents/
 
 %{__rm} -rf %{buildroot}%{_datadir}/dvi
