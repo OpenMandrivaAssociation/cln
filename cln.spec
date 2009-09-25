@@ -5,7 +5,7 @@
 Summary:	C++ Class Library for Numbers
 Name:		cln
 Version:	1.3.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sciences/Mathematics
 URL:		http://www.ginac.de/CLN/
@@ -52,7 +52,11 @@ the CLN library.
 
 %build
 %configure2_5x
+%ifarch %arm
+%make CPPFLAGS="-DNO_ASM"
+%else
 %make
+%endif
 
 %check
 %make check
