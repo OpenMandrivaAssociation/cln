@@ -68,7 +68,7 @@ the CLN library.
 # prepare documents
 %{__rm} -rf documents
 %{__mkdir} documents
-%{__cp} --parents examples/*.cc documents/
+%{__cp} -p examples/*.cc documents/
 
 %{__rm} -rf %{buildroot}%{_datadir}/dvi
 
