@@ -4,12 +4,12 @@
 
 Summary:	C++ Class Library for Numbers
 Name:		cln
-Version:	1.3.1
-Release:	%mkrel 3
+Version:	1.3.2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sciences/Mathematics
 URL:		http://www.ginac.de/CLN/
-Source0:	ftp://ftpthep.physik.uni-mainz.de/pub/gnu/%{name}-%{version}.tar.bz2
+Source0:	http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 BuildRequires:	gmp-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
