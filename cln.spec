@@ -41,9 +41,13 @@ the CLN library.
 %setup -q
 
 %build
-%configure2_5x \
+%ifarch %armx
+export CC=gcc
+export CXX=g++
+%endif
+%configure \
 	--disable-static
-%ifarch %arm
+%ifarch %armx
 %make CPPFLAGS="-DNO_ASM"
 %else
 %make
