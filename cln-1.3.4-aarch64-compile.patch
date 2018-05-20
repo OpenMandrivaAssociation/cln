@@ -1,0 +1,33 @@
+diff -up cln-1.3.4/src/base/low/cl_low_div.cc.omv~ cln-1.3.4/src/base/low/cl_low_div.cc
+--- cln-1.3.4/src/base/low/cl_low_div.cc.omv~	2018-05-19 23:31:57.972208835 +0000
++++ cln-1.3.4/src/base/low/cl_low_div.cc	2018-05-20 00:31:28.796278351 +0000
+@@ -207,6 +207,7 @@ uint32 divu_6432_3232_(uint32 xhi, uint3
+ #endif
+ 
+ #ifdef NEED_VAR_divu_64_rest
++extern "C" uint64 divu_64_rest;
+ uint64 divu_64_rest;
+ #endif
+ 
+diff -up cln-1.3.4/src/base/low/cl_low_mul.cc.omv~ cln-1.3.4/src/base/low/cl_low_mul.cc
+--- cln-1.3.4/src/base/low/cl_low_mul.cc.omv~	2018-05-19 23:32:37.737769692 +0000
++++ cln-1.3.4/src/base/low/cl_low_mul.cc	2018-05-20 00:29:42.831714585 +0000
+@@ -48,12 +48,12 @@ uint64 mulu32_w (uint32 arg1, uint32 arg
+ }  // namespace cln
+ #endif
+ 
+-
+ #ifdef NEED_VAR_mulu64_high
+ uint64 mulu64_high;
+ #endif
+ 
+ #ifdef NEED_FUNCTION_mulu64_
++extern "C" uint64 mulu64_high;
+ uint64 mulu64_high;
+ namespace cln {
+ extern "C" uint64 mulu64_ (uint64 x, uint64 y);
+@@ -77,4 +77,3 @@ uint64 mulu64_ (uint64 x, uint64 y)
+ }
+ }  // namespace cln
+ #endif
+-

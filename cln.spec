@@ -10,6 +10,7 @@ License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		http://www.ginac.de/CLN/
 Source0:	http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
+Patch0:		cln-1.3.4-aarch64-compile.patch
 BuildRequires:	gmp-devel
 
 %description
@@ -38,20 +39,12 @@ This package is necessary if you wish to develop software that uses
 the CLN library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%ifarch %armx
-export CC=gcc
-export CXX=g++
-%endif
 %configure \
 	--disable-static
-%ifarch %armx
-%make CPPFLAGS="-DNO_ASM"
-%else
-%make
-%endif
+%make 
 
 %check
 %make check
