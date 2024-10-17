@@ -8,7 +8,7 @@ Version:	1.3.6
 Release:	2
 License:	GPLv2+
 Group:		Sciences/Mathematics
-Url:		http://www.ginac.de/CLN/
+Url:		https://www.ginac.de/CLN/
 Source0:	http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
 Patch0:		cln-1.3.4-aarch64-compile.patch
 BuildRequires:	gmp-devel
