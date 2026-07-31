@@ -4,13 +4,13 @@
 
 Summary:	C++ Class Library for Numbers
 Name:		cln
-Version:	1.3.6
-Release:	2
+Version:	1.3.7
+Release:	1
 License:	GPLv2+
 Group:		Sciences/Mathematics
 Url:		https://www.ginac.de/CLN/
 Source0:	http://www.ginac.de/CLN/%{name}-%{version}.tar.bz2
-Patch0:		cln-1.3.4-aarch64-compile.patch
+# dropped (no longer applies): Patch0:		cln-1.3.4-aarch64-compile.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool-base
